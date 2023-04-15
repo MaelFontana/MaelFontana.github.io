@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First HTML page using JavaScript!</title>
+    <link rel="stylesheet" href="javascript.css">
+     <script>
+        var time=0;
+        var number=Math.floor(Math.random()*10000+1);
+        function myGame(){
+            var G = parseInt(document.getElementById("guess").value);
+            if (number<G){
+                const para = document.createElement("p");
+                const node = document.createTextNode(`${G}: Too big`);
+                para.appendChild(node);
+                const element = document.getElementById("guesses");
+                element.appendChild(para);
+            }
+            if (number>G){
+                const para = document.createElement("p");
+                const node = document.createTextNode(`${G}: Too low`);
+                para.appendChild(node);
+                const element = document.getElementById("guesses");
+                element.appendChild(para);
+            }
+            if (number === G){
+                const para = document.createElement("p");
+                const node = document.createTextNode("You won.");
+                para.appendChild(node);
+                const element = document.getElementById("guesses");
+                element.appendChild(para);
+            }
+            if (time === 14){
+                const para = document.createElement("p");
+                const node = document.createTextNode("You lost.");
+                para.appendChild(node);
+                const element = document.getElementById("guesses");
+                element.appendChild(para);
+            }
+            time+=1;
+        }
+    </script>
+</head>
+<body>
+    <main>
+    <div class="box" id="box">
+        <header>
+        <h1>Play my wonderful game.</h1>
+        </header>
+            <form>
+                <input type="text" id = "guess" class="text" placeholder="Type your guess here" pattern="1-10000">
+                <input type="button" value="Submit" id = "submit" onClick = "myGame()" class="button">
+                <a href="javascript.html"><input type="button" value="Play again" class="button"></a>
+                <input type="button" value="Rules" class="button" title="A random number between 1 and 10 000 has been chosen. Find it in under 15 attempts">
+            </form>
+    </div>
+    <div id="guesses" class="guesses">
+        <h2>Your guesses:</h2>
+    </div>
+    </main>
+</body>
+</html>
